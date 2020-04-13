@@ -1,5 +1,5 @@
 // get graphs
-function retrieveGraphs(selectedID) {
+function displayGraphs(selectedID) {
   d3.json("data/samples.json").then(function (data) {
     var metadata = data.metadata;
     var samples = data.samples;
@@ -13,7 +13,7 @@ function retrieveGraphs(selectedID) {
     // get data
     var sample_values = samplesResults.sample_values;
     var otu_ids = samplesResults.otu_ids;
-    var otu_labels = sampleResults.otu_labels;
+    var otu_labels = samplesResults.otu_labels;
 
 
     // bar graph
@@ -23,12 +23,12 @@ function retrieveGraphs(selectedID) {
       y: otu_ids.slice(0, 10).map(id => `OTU ${id}`).reverse(),
       text: otu_labels.slice(0, 10).reverse(),
       marker: {
-        color: 'rgb(142,124,195)'
+        color: 'rgb(123,104,238)'
       },
       type: "bar",
       orientation: "h"
     };
-    var barData = [barTrace];
+    var barData = [barGraph];
     var barLayout = {
       title: "Top 10 OTU",
       yaxis: {
@@ -85,39 +85,39 @@ function retrieveGraphs(selectedID) {
             },
             steps: [{
                     range: [0, 1],
-                    color: "#ffffe4"
+                    color: "#f2f2f2"
                 },
                 {
                     range: [1, 2],
-                    color: "#dff2c5"
+                    color: "#ffffe6"
                 },
                 {
                     range: [2, 3],
-                    color: "#c7e3a8"
+                    color: "#e6ffb3"
                 },
                 {
                     range: [3, 4],
-                    color: "#b1d38d"
+                    color: "#ddff99"
                 },
                 {
                     range: [4, 5],
-                    color: "#9ec374"
+                    color: "#bbff33"
                 },
                 {
                     range: [5, 6], 
-                    color: "#8cb25a"
+                    color: "#99e600"
                 }, 
                 {
                     range: [6, 7], 
-                    color: "#7aa241"
+                    color: "#77b300"
                 },
                 {
                     range: [7, 8],
-                    color: "#6a9127"
+                    color: "#2eb82e"
                 },
                 {
                     range: [8,9],
-                    color: "#5a8100"
+                    color: "#00b33c"
                 }   
             ]
           }
@@ -156,7 +156,7 @@ function displayDemographics(selectedID) {
 
 function optionChanged(selectedID) {
     displayGraphs(selectedID);
-    displayDemographicInfo(selectedID);
+    displayDemographics(selectedID);
 };
 
 function init() {
@@ -172,7 +172,7 @@ function init() {
 
         // functions to display the first result
         displayGraphs(ids[0]);
-        displayDemographicInfo(id[0]);
+        displayDemographics(ids[0]);
     });
 };
 
