@@ -1,1 +1,1 @@
-# PlotlyHW
+This project compares the frequency an individual scrubs their belly button per week to the bacteria found in their belly button. The data is in the form of a json file.  SQLite was used as the database. SQLalchemy and Flask were used to work with the data as Python objects. I created an HTML website with javascript to give the charts interactivity. 
